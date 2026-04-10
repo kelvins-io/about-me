@@ -6,13 +6,11 @@
 支持第三方OA认证插件
 支持请求方body敏感数据拦截，上游响应body敏感数据脱敏插件
 支持kong281、kong342自定义lua插件，go插件构建kong容器镜像
-支持grpc-web-advanced插件支持http->grpc，可使用disk和远程proto文件转发grpc
-支持proxy-cache-advanced插件缓存上游响应，可使用memory，disk，redis，腾讯云tcos，阿里云oss存储策略
 解决http-sse代理response首token卡顿问题
 支持用户端到kong以及到上游服务的网络连通状态实时探活
 支持api调用状况实时计算和异常实时通知到人
 实施kong源地址tcp路由代理，目标地址tcp路由代理
-实施kong342代理grpc协议，http转grpc协议
+实施kong代理grpc协议，扩展grpc-web和grpc-gateway插件支持挂载远程proto
 升级kong281到kong342提升转发性能和规避已有缺陷
 实施kong281网关数据无损迁移kong342
 实施kong281就地升级，kong342控制面和数据面混合部署，kong版本灰度升级
@@ -26,9 +24,11 @@
 支持http到sofa-bolt协议转换泛化调用，实现基于权重匹配upstream
 支持后端服务上云工作，如服务dockerfile构建镜像，服务配置参数ENV覆盖，支持服务X86_64/ARM双平台部署，kong转发日志file-log迁移aliyun-sls采集
 配合实施pg主从切换，pgpool故障转移演练，linux-vip+nginx实现请求分流和故障转移
-探索kong-gzip压缩回传客户端上游body
+扩展proxy-cache插件存储策略disk，redis等以及回源防护机制
+支持response-gzip插件压缩指定类型上游body
+协助用户定位网关5xx转发问题
 工具链：
-gin，gorm，pg-repmgr，pgpool，go-redis，kong，kong-exporter，kong-lua-plugins，kong-pdk，go-kong，konga/kong-gui，dubbo-pixiu，sofa-bolt-go，luaJit，grpc
+gin，gorm，pg-repmgr，pgpool，go-redis，kong，kong-exporter，kong-lua-plugins，kong-pdk，go-kong，konga/kong-gui，dubbo-pixiu，sofa-bolt-go，luaJit
 ```
 # link me
 
